@@ -1,6 +1,6 @@
 *
-
-!/Lab.
+!.gitattributes
+!.gitignore
+!.gitkeep
 !*.s
-!*/*.s
-
+!*/
