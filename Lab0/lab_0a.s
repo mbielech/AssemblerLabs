@@ -8,13 +8,13 @@
 #
 #----------------------------------------------------------------
 
-	.data
+	.data				# poczatek danych
 	
-dummy:				# some data
-	.byte	0x00
+dummy:					# etykieta dummy 
+	.byte	0x00		# jakaś dana o wielkosci byte i wartosci 0x00
 
-	.text
-	.global _start		# entry point
+	.text				# poczatek programu
+	.global _start		# punkt startowy programu
 	
-_start:
-	JMP	_start
+_start:					# etykieta _start
+	JMP	_start			# skok do etykiety _start

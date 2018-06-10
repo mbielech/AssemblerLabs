@@ -8,54 +8,54 @@
 #
 #----------------------------------------------------------------
 
-	.equ	kernel,0x80		#Linux system functions entry
-	.equ	write,0x04		#write data to file function
-	.equ	exit,0x01		#exit program function
-	.equ	stdout,1		#file handle STDOUT
+	.equ	kernel,	0x80		# do funkcji systemowych Linuxa
+	.equ	write,	0x04		# funkcja write
+	.equ	exit,	0x01		# funkcja exit
+	.equ	stdout,	1			# deskryptor stdout
 
-	.data
+	.data						# dane
 	
-starttxt:					#first message
-	.ascii	"Start\n"
+starttxt:						# etykieta starttxt
+	.ascii	"Start\n"			# napis
 starttxtlen:
-	.long	(. - starttxt)
-endtxt:						#last message
+	.long	(. - starttxt)		# kropka to adres bierzacy minus poczatek napisu da nam dlugosc
+endtxt:
 	.ascii	"Finish\n"
 endtxtlen:
 	.long	(. - endtxt)
-gurutxt:					#other message
+gurutxt:
 	.ascii	"A jem assembler guru\n"
 gurutxtlen:
 	.long	(. - gurutxt)
-	
-	.text
+
+	.text						# poczatek programu
 	.global _start
 	
 _start:
-	MOVL	$write,%eax		#write first message
-	MOVL	$stdout,%ebx
-	MOVL	$starttxt,%ecx
-	MOVL	starttxtlen,%edx
-	INT	$kernel
+	MOVL	$write,		%eax	# numer funkcji do eax (write)
+	MOVL	$stdout,	%ebx	# deskryptor, gdzie pisac do ebx (stdout)
+	MOVL	$starttxt,	%ecx	# wskaznik na poczatek tekstu do ecx
+	MOVL	starttxtlen,%edx	# dlugosc tekstu do edx (bez $ bo przekazujemy wartosc, a nie adres)
+	INT		$kernel				# interruption aby wykonac funkcje systemowa
+
+	NOP							# No OPeration
+
+	MOVL	$write,		%eax	# write other message
+	MOVL	$stdout,	%ebx
+	MOVL	$gurutxt,	%ecx
+	MOVL	gurutxtlen,	%edx
+	INT		$kernel
 
 	NOP
 
-	MOVL	$write,%eax		#write other message
-	MOVL	$stdout,%ebx
-	MOVL	$gurutxt,%ecx
-	MOVL	gurutxtlen,%edx
-	INT	$kernel
-
-	NOP
-
-	MOVL	$write,%eax		#write last message
-	MOVL	$stdout,%ebx
-	MOVL	$endtxt,%ecx
-	MOVL	endtxtlen,%edx
-	INT	$kernel
+	MOVL	$write,		%eax	#write last message
+	MOVL	$stdout,	%ebx
+	MOVL	$endtxt,	%ecx
+	MOVL	endtxtlen,	%edx
+	INT		$kernel
 
 	NOP
 
 theend:
-	MOVL	$exit,%eax		#exit program
-	INT	$kernel
+	MOVL	$exit,		%eax	# exit program
+	INT		$kernel

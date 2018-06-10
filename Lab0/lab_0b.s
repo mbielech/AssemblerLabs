@@ -8,14 +8,14 @@
 #
 #----------------------------------------------------------------
 
-	.data
+	.data				# poczatek danych
 	
-dummy:				# some data
-	.byte	0x00
+dummy:					# etykieta dummy 
+	.byte	0x00		# jakaś dana o wielkosci byte i wartosci 0x00
 
-	.text
-	.global _start		# entry point
+	.text				# poczatek programu
+	.global _start		# punkt startowy programu
 	
-_start:
-	MOV	$1, %eax	# exit function
-	INT	$0x80		# system interrupt
+_start:					# etykieta _start
+	MOV	$1, %eax		# wpisanie 1 do rejestru eax (exit function)
+	INT	$0x80			# system interrupt, co z jedynka w eax da funkcje exit
