@@ -62,8 +62,8 @@ int stringA(char* buf, int a, int b, int charset, int* count);
 
 void main( void ) {
 	char str[] = "ababA0eiubgoe";
-	int a = 2;
-	int b = 2;
+	int a = 0;
+	int b = 10;
 	int charset = 0;
 	int count = 0;
 	

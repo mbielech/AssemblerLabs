@@ -33,7 +33,9 @@ next:
 	CMP	$0,		%rcx	# if(charset == 0)
 	JNE not0
 	
-	ADD	%r10b,	%al
+	XOR	%r11,	%r11
+	MOV	%r10b,	%r11b
+	ADD	%r11,	%rax
 	INC %r14
 	
 not0:
@@ -46,7 +48,9 @@ not0:
 	CMP	$'9',	%r10b
 	JG	not1
 	
-	ADD	%r10b,	%al
+	XOR	%r11,	%r11
+	MOV	%r10b,	%r11b
+	ADD	%r11,	%rax
 	INC %r14
 	
 not1:
@@ -59,7 +63,9 @@ not1:
 	CMP	$'Z',	%r10b
 	JG	not2
 	
-	ADD	%r10b,	%al
+	XOR	%r11,	%r11
+	MOV	%r10b,	%r11b
+	ADD	%r11,	%rax
 	INC %r14
 	
 not2:
@@ -72,7 +78,9 @@ not2:
 	CMP	$'z',	%r10b
 	JG	not3
 	
-	ADD	%r10b,	%al
+	XOR	%r11,	%r11
+	MOV	%r10b,	%r11b
+	ADD	%r11,	%rax
 	INC %r14
 	
 not3:
@@ -85,7 +93,9 @@ not3:
 	CMP	$'z',	%r10b
 	JG	notaz
 	
-	ADD	%r10b,	%al
+	XOR	%r11,	%r11
+	MOV	%r10b,	%r11b
+	ADD	%r11,	%rax
 	INC %r14
 	
 notaz:
@@ -95,7 +105,9 @@ notaz:
 	CMP	$'Z',	%r10b
 	JG	continue
 	
-	ADD	%r10b,	%al
+	XOR	%r11,	%r11
+	MOV	%r10b,	%r11b
+	ADD	%r11,	%rax
 	INC %r14
 	
 continue:
