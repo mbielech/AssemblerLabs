@@ -67,12 +67,12 @@ void main( void ) {
 	int charset = 0;
 	int count = 0;
 	
-	
-	printf("%d, %d\n",stringC(str, a, b, charset, &count), count);
+	int value = stringC(str, a, b, charset, &count);
+	printf("%d, %d\n", value, count);
 	
 	count = 0;
 	
-	
-	printf("%d, %d\n",stringA(str, a, b, charset, &count), count);
+	value = stringA(str, a, b, charset, &count);
+	printf("%d, %d\n", value, count);
 	
 }
