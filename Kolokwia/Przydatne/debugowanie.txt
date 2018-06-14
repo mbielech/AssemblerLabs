@@ -1,0 +1,10 @@
+gdb -tui nazwapliku
+layout asm
+b nazwafunkcji
+run
+record
+i po tym :
+wa $rejestr - sledzenie
+p $rejestr - drukowanie
+si - kolejny krok
+reverse-step - cofanie
